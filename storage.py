@@ -32,3 +32,13 @@ class DBStorage():
         # clear training data
         c = self.con.cursor()
         c.execute("DELETE FROM trainingData_table")
+
+    def insert_row(self, values):
+        cur = self.con.cursor()
+        try:
+            cur.execute(
+                'INSERT INTO trainingData_table (userid, movieId, timestamp, rating,) VALUES(?, ?, ?, ?,)', values)
+            self.con.commit()
+        except sqlite3.IntegrityError:
+            pass
+        cur.close()

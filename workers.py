@@ -1,10 +1,17 @@
 import pandas as pd
+from storage import DBStorage
 
 
 def GetRecommendations():
     # runs the model for recommendation generation to generate the generations
     df = pd.empty()
     return df
+
+
+def AddRecommendations():
+    # addrows in the recommendation
+    storage = DBStorage()
+    storage.insert_row()
 
 
 def RetrainRecommendationModel():
